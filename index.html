@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d10">
+  <meta name="description" content="Công cụ cài firmware EnderBridge S3 trực tiếp từ trình duyệt.">
+  <title>Cài đặt EnderBridge S3</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="EnderBridge S3">
+        <span class="brand-mark">EB</span>
+        <span><strong>EnderBridge S3</strong><small>Firmware Installer</small></span>
+      </a>
+      <span id="browserState" class="browser-state checking">Đang kiểm tra trình duyệt</span>
+    </header>
+
+    <section id="top" class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">CÀI ĐẶT QUA USB · ESP32-S3</p>
+        <h1>Nạp firmware.<br></h1>
+        <p class="lead">Kết nối bo mạch bằng cáp USB dữ liệu, chọn đúng cổng và để trình duyệt hoàn tất phần còn lại.</p>
+        <div class="badges" aria-label="Thông tin phiên bản">
+          <span>Firmware v37.1</span>
+          <span>Arduino Core 3.3.8</span>
+          <span>ESP32-S3</span>
+        </div>
+      </div>
+      <div class="device-graphic" aria-hidden="true">
+        <div class="board">
+          <i></i><i></i><i></i><i></i>
+          <div class="chip"><span>ESP32-S3</span><b>ENDER<br>BRIDGE</b></div>
+          <div class="usb"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="panel installer-panel">
+        <div class="panel-heading">
+          <span class="step-number">01</span>
+          <div><p>TRÌNH CÀI ĐẶT</p><h2>EnderBridge S3 v37.1</h2></div>
+          <span class="release-dot">Ổn định</span>
+        </div>
+
+        <div class="checklist">
+          <div><b>1</b><span><strong>Dùng đúng cáp</strong><small>Cáp USB phải hỗ trợ truyền dữ liệu, không chỉ cấp nguồn.</small></span></div>
+          <div><b>2</b><span><strong>Ngắt máy in</strong><small>Rút cáp Ender khỏi cổng USB Host trong lúc nạp firmware.</small></span></div>
+          <div><b>3</b><span><strong>Chọn cổng ESP32-S3</strong><small>Chọn cổng bạn vẫn dùng để nạp code trong Arduino IDE.</small></span></div>
+        </div>
+
+        <div class="install-zone">
+          <esp-web-install-button manifest="manifest.json">
+            <button slot="activate" class="install-button" type="button">
+              <span>Kết nối và cài firmware</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 20h14"/></svg>
+            </button>
+            <p slot="unsupported" class="compat-error">Trình duyệt này không hỗ trợ nạp USB. Hãy dùng Chrome hoặc Microsoft Edge.</p>
+            <p slot="not-allowed" class="compat-error">Trang cài đặt phải được mở bằng HTTPS hoặc localhost.</p>
+          </esp-web-install-button>
+          <p class="install-note">Khi được hỏi xóa dữ liệu: chọn xóa cho bo mạch mới; bỏ chọn nếu cập nhật và muốn giữ cấu hình Wi-Fi.</p>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <article class="panel compact-panel">
+          <div class="panel-heading small">
+            <span class="step-number">02</span>
+            <div><p>SAU KHI CÀI</p><h2>Kết nối Wi-Fi</h2></div>
+          </div>
+          <ol class="after-list">
+            <li>Bật lại ESP32-S3.</li>
+            <li>Kết nối Wi-Fi <code>EnderBridge-S3</code>.</li>
+            <li>Mở <a href="http://192.168.4.1">192.168.4.1</a> để chọn mạng.</li>
+            <li>Sau khi kết nối, mở <a href="http://ender3v3.local">ender3v3.local</a>.</li>
+          </ol>
+        </article>
+
+        <article class="panel compact-panel privacy-panel">
+          <p class="micro-title">QUYỀN RIÊNG TƯ</p>
+          <h2>Sản phẩm này được phát triển dựa trên tài liệu và nhu cầu cá nhân</h2>
+          <p>Liên hệ dép lào: 0342603075 </code>. Dữ liệu nạp được trình duyệt gửi trực tiếp tới cổng USB mà bạn chọn.</p>
+        </article>
+      </aside>
+    </section>
+
+    <details class="troubleshoot panel">
+      <summary>ESP không kết nối hoặc hiện “waiting for download”</summary>
+      <div>
+        <p>Giữ nút <strong>BOOT</strong>, nhấn rồi thả <strong>RESET</strong>, sau đó thả <strong>BOOT</strong> và thử lại. Đóng Arduino IDE hoặc Serial Monitor nếu chúng đang giữ cổng COM.</p>
+      </div>
+    </details>
+
+    <footer>
+      <div><span>Thiết kế & phát triển</span><strong>Minh Trí</strong></div>
+      <div class="footer-meta"><span>Thiết bị</span><strong>Ender 3 V3 SE</strong></div>
+    </footer>
+  </main>
+</body>
+</html>
